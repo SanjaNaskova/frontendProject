@@ -85,3 +85,18 @@ left: 20px;
     max-width: 200px;
     margin: 0 auto;
   }
+
+
+  .contact-naslov{
+      background-color:#90dfcf;
+
+  }
+
+  #contct-naslov{
+color: white;
+  }
+
+  #simb-boja{
+      height: 15px;
+      background-color: #90dfcf;
+  }

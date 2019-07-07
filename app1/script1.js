@@ -239,10 +239,11 @@ function showResult(){
                  //just skip
               }
               else{
-
+                  
                 if(pharmaciesCount % 2 == 0 && pharmaciesCount != apteki.pharmacies.length - 1){
                      console.log(1);
                      pharmaciesString += `
+                     
                      <div class="row">
                      <div class="col-md-3">
                      <div class="card">
