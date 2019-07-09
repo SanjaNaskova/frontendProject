@@ -100,3 +100,8 @@ color: white;
       height: 15px;
       background-color: #90dfcf;
   }
+
+  #lek-naslov{
+      text-shadow: #6f9492;
+      color: darkslategrey;
+  }

@@ -1,7 +1,5 @@
 
 // Naslovi stavi na site strani
-// Dodadi sliki na aptekite i na apcinjata ( ako sakas da ne ti se zavisni od internet slikite na git kaci gi i od tamu desen klik -> copy image address )
-// Error stranata napravi ja so slika so tazno smajli ili nesto takvo i kopce sto nosi do Home i pisuva ( Try Again )
 //od "kontakt" i "za nas" koa idam na lista na apteki ne mi dava nisto
 
 $(window).ready(function() {
@@ -15,7 +13,7 @@ let dropContainer = document.querySelector('#drop-container');
 let aptekiContainer = document.querySelector('#apteki');
 let dropresults = document.querySelector('#drop-res');
 
-fetch("https://raw.githubusercontent.com/SanjaNaskova/jsonData/master/data.json")
+fetch("https://raw.githubusercontent.com/SanjaNaskova/jsonDataa/master/data.json")
 .then (res => res.json())
 .then (data => {
      container.style.display = "block";
@@ -50,9 +48,9 @@ $("#test").on("click",function(){
          </button>
          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
            <a class="dropdown-item" id="dropCentar" href="#">Центар</a>
-           <a class="dropdown-item" href="#">Ново Лисиче</a>
-           <a class="dropdown-item" href="#">Аеродром</a>
-           <a class="dropdown-item" href="#">Карпош 3</a>
+           <a class="dropdown-item" id="dropNovoLisiche" href="#">Ново Лисиче</a>
+           <a class="dropdown-item" id="dropAerodrom" href="#">Аеродром</a>
+           <a class="dropdown-item" id="dropKarposh" href="#">Карпош 3</a>
          </div>
        </div>`);
 
@@ -64,22 +62,52 @@ $("#test").on("click",function(){
         searchRes.style.display="none";
         aptekiContainer.style.display = "none";
         showFromCentar();
-    })
-        
+        })
+
+        $("#dropAerodrom").click(function(){
+
+            dropresults.style.display = "block";
+            dropContainer.style.display = "block"
+            container.style.display="none";
+            searchRes.style.display="none";
+            aptekiContainer.style.display = "none";
+            showFromAerodrom();
+            })
+      
+            $("#dropNovoLisiche").click(function(){
+
+                dropresults.style.display = "block";
+                dropContainer.style.display = "block"
+                container.style.display="none";
+                searchRes.style.display="none";
+                aptekiContainer.style.display = "none";
+                showFromNovoLisiche();
+                })    
+
+                $("#dropKarposh").click(function(){
+
+                    dropresults.style.display = "block";
+                    dropContainer.style.display = "block"
+                    container.style.display="none";
+                    searchRes.style.display="none";
+                    aptekiContainer.style.display = "none";
+                    showFromKarposh();
+                    })
 
 })
-
 
 
 function showFromCentar(){
     console.log("Show from Centar ");
 
- let centar =  apteki.pharmacies.filter(pharm => pharm.location.naselba = "Центар");
+ let centar =  apteki.pharmacies.filter(pharm => pharm.location.naselba === "Центар");
+
+ pharmaciesCount = 0;
+ let pharmaciesString = "";
 
  centar.forEach(pharm => {
 
- pharmaciesCount = 0;
- pharmaciesString = "";
+
 
 if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
    console.log(1);
@@ -139,17 +167,238 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
 
 });
 
-$("#drop-res").append(pharmaciesString);
+$("#drop-res").html(pharmaciesString);
 
 }
 
+function showFromNovoLisiche(){
+    console.log("Show from novo lisice ");
+
+ let centar =  apteki.pharmacies.filter(pharm => pharm.location.naselba === "Ново Лисиче");
+
+ pharmaciesCount = 0;
+ let pharmaciesString = "";
+
+ centar.forEach(pharm => {
+
+
+
+if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
+   console.log(1);
+   pharmaciesString += `
+   <div class="row">
+   <div class="col-md-2"></div>
+   <div class="col-md-4">
+   <div class="card">
+   <img src="${pharm.location.slika}"   class="card-img-top" alt="">
+   <h5 class="card-title">${pharm.name}</h5>
+   <p id="card-text">
+   ${pharm.location.address}<br>
+   <h6> Населба: ${pharm.location.naselba} </h6><br>
+   </p>
+   <a href="#" class="btn btn-primary">Go somewhere</a>
+   </div>
+   </div>
+   `  }
+   else if(pharmaciesCount % 2 != 0){
+       console.log(2);
+       pharmaciesString += `
+       
+       <div class="col-md-4">
+       <div class="card">
+       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+       <h5 class="card-title">${pharm.name}</h5>
+       <p id="card-text">
+       ${pharm.location.address}<br>
+       <h6> Населба: ${pharm.location.naselba} </h6>
+       </p>
+       <a href="#" class="btn btn-primary">Go somewhere</a>
+       </div>
+       </div>
+       </div>
+   `    } 
+
+   else if(pharmaciesCount == centar.length - 1){
+       console.log(3);
+       pharmaciesString += `
+       <div class="row">
+       <div class="col-md-2"></div>
+       <div class="col-md-4">
+       <div class="card">
+       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+       <h5 class="card-title">${pharm.name}</h5>
+       <p id="card-text">
+       ${pharm.location.address}<br>
+       <h6> Населба: ${pharm.location.naselba} </h6>
+       </p>
+       <a href="#" class="btn btn-primary">Go somewhere</a>
+       </div>
+       </div>
+       </div>
+   `    }
+
+   pharmaciesCount++;
+
+});
+
+$("#drop-res").html(pharmaciesString);
+
+}
+
+function showFromAerodrom(){
+    console.log("Show from Centar ");
+
+ let centar =  apteki.pharmacies.filter(pharm => pharm.location.naselba === "Аеродром");
+
+ pharmaciesCount = 0;
+ let pharmaciesString = "";
+
+ centar.forEach(pharm => {
+
+
+
+if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
+   console.log(1);
+   pharmaciesString += `
+   <div class="row">
+   <div class="col-md-2"></div>
+   <div class="col-md-4">
+   <div class="card">
+   <img src="${pharm.location.slika}"   class="card-img-top" alt="">
+   <h5 class="card-title">${pharm.name}</h5>
+   <p id="card-text">
+   ${pharm.location.address}<br>
+   <h6> Населба: ${pharm.location.naselba} </h6><br>
+   </p>
+   <a href="#" class="btn btn-primary">Go somewhere</a>
+   </div>
+   </div>
+   `  }
+   else if(pharmaciesCount % 2 != 0){
+       console.log(2);
+       pharmaciesString += `
+       
+       <div class="col-md-4">
+       <div class="card">
+       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+       <h5 class="card-title">${pharm.name}</h5>
+       <p id="card-text">
+       ${pharm.location.address}<br>
+       <h6> Населба: ${pharm.location.naselba} </h6>
+       </p>
+       <a href="#" class="btn btn-primary">Go somewhere</a>
+       </div>
+       </div>
+       </div>
+   `    } 
+
+   else if(pharmaciesCount == centar.length - 1){
+       console.log(3);
+       pharmaciesString += `
+       <div class="row">
+       <div class="col-md-2"></div>
+       <div class="col-md-4">
+       <div class="card">
+       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+       <h5 class="card-title">${pharm.name}</h5>
+       <p id="card-text">
+       ${pharm.location.address}<br>
+       <h6> Населба: ${pharm.location.naselba} </h6>
+       </p>
+       <a href="#" class="btn btn-primary">Go somewhere</a>
+       </div>
+       </div>
+       </div>
+   `    }
+
+   pharmaciesCount++;
+
+});
+
+$("#drop-res").html(pharmaciesString);
+
+}
+
+function showFromKarposh(){
+    console.log("Show from Centar ");
+
+ let centar =  apteki.pharmacies.filter(pharm => pharm.location.naselba === "Карпош 3");
+
+ pharmaciesCount = 0;
+ let pharmaciesString = "";
+
+ centar.forEach(pharm => {
+
+
+
+if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
+   console.log(1);
+   pharmaciesString += `
+   <div class="row">
+   <div class="col-md-2"></div>
+   <div class="col-md-4">
+   <div class="card">
+   <img src="${pharm.location.slika}"   class="card-img-top" alt="">
+   <h5 class="card-title">${pharm.name}</h5>
+   <p id="card-text">
+   ${pharm.location.address}<br>
+   <h6> Населба: ${pharm.location.naselba} </h6><br>
+   </p>
+   <a href="#" class="btn btn-primary">Go somewhere</a>
+   </div>
+   </div>
+   `  }
+   else if(pharmaciesCount % 2 != 0){
+       console.log(2);
+       pharmaciesString += `
+       
+       <div class="col-md-4">
+       <div class="card">
+       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+       <h5 class="card-title">${pharm.name}</h5>
+       <p id="card-text">
+       ${pharm.location.address}<br>
+       <h6> Населба: ${pharm.location.naselba} </h6>
+       </p>
+       <a href="#" class="btn btn-primary">Go somewhere</a>
+       </div>
+       </div>
+       </div>
+   `    } 
+
+   else if(pharmaciesCount == centar.length - 1){
+       console.log(3);
+       pharmaciesString += `
+       <div class="row">
+       <div class="col-md-2"></div>
+       <div class="col-md-4">
+       <div class="card">
+       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+       <h5 class="card-title">${pharm.name}</h5>
+       <p id="card-text">
+       ${pharm.location.address}<br>
+       <h6> Населба: ${pharm.location.naselba} </h6>
+       </p>
+       <a href="#" class="btn btn-primary">Go somewhere</a>
+       </div>
+       </div>
+       </div>
+   `    }
+
+   pharmaciesCount++;
+
+});
+
+$("#drop-res").html(pharmaciesString);
+
+}
 
 
 function showResult(){
 
     pharmaciesCount = 0;
     pharmaciesString = "";
-
+    let noResult = "";
     let medExsists = false;
   
   apteki.pharmacies.forEach(pharm => {
@@ -175,7 +424,7 @@ function showResult(){
                      <p id="card-text">
                      ${pharm.location.address}<br>
                      <h6> Населба: ${pharm.location.naselba} </h6><br>
-                     <h6> Во залиха: ${med.type} парчиња</h6><br>
+                     <h6> Тип на лекот: ${med.type} </h6><br>
                      <h6> Во залиха: ${med.stock} парчиња</h6><br>
                      <h6> Цена: ${med.price} денари</h6><br>
                      </p>
@@ -194,6 +443,7 @@ function showResult(){
                         <p id="card-text">
                         ${pharm.location.address}<br>
                         <h6> Населба: ${pharm.location.naselba} </h6>
+                        <h6> Тип на лекот: ${med.type} </h6><br>
                         <h6> Во залиха: ${med.stock} парчиња</h6><br>
                         <h6> Цена: ${med.price} денари</h6><br>
                         </p>
@@ -214,6 +464,7 @@ function showResult(){
                         <p id="card-text">
                         ${pharm.location.address}<br>
                         <h6> Населба: ${pharm.location.naselba} </h6>
+                        <h6> Тип на лекот: ${med.type} </h6><br>
                         <h6> Во залиха: ${med.stock} парчиња</h6><br>
                         <h6> Цена: ${med.price} денари</h6><br>
                         </p>
@@ -227,25 +478,40 @@ function showResult(){
               }
           }                      
       });
-             //ova da se smeniiiii!!!! pojavuva povekje pati
-           if(!medExsists) {
-           pharmaciesString += `
-           <div class="row">
-           <div class="col-md-2"></div>
-           <div class="col-md-4">
-           <div class="card">
-           <h5 class="card-title"> Бараниот лек не постои </h5>
-           <p id="card-text">
-           </p>
-           <a href="#" class="btn btn-primary">Go somewhere</a>
-           </div>
-           </div>
-           </div>
-       `  }  
+  
   });
-  $("#res").append(pharmaciesString);
-  }
 
+  //sto da printa
+  if(medExsists){
+
+    $('#res').html(` <div class="alert alert-info">
+    <div class="container">
+        <div class="alert-icon">
+        </div>
+        <h2><b>${searchMedicine.toUpperCase()}</b> е достапен на следниве локации:<br><br><br>
+    </div>
+</div>` + pharmaciesString);
+    // $("#res").html(`<h2 id="lek-naslov"> ${searchMedicine.toUpperCase()}  е достапен на следниве локации:</h2><br><br><br> ` + pharmaciesString);
+
+  }
+   else if(!medExsists)
+   {
+    $("#res").html(`
+    <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+    <div class="card">
+    <img src="img/empty.png" alt="Smiley face" height="200px" width="200px">
+    <h5 class="card-title"> Лекот '${searchMedicine}' не постои </h5>
+    <p id="card-text">
+    </p>
+    <a href="index.html" class="btn btn-primary">Обиди се повторно</a>
+    </div>
+    </div>
+    </div>
+`)
+  }
+ }
 
 
 function makeCards(data){
