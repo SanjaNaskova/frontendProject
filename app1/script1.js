@@ -14,7 +14,7 @@ let searchMedicine;
 let container = document.querySelector('.hide');
 let searchRes = document.querySelector('.search-res');
 let dropContainer = document.querySelector('#drop-container');
-
+let aptekiContainer = document.querySelector('#apteki');
 
 
 fetch("https://raw.githubusercontent.com/SanjaNaskova/jsonData/master/data.json")
@@ -30,10 +30,10 @@ fetch("https://raw.githubusercontent.com/SanjaNaskova/jsonData/master/data.json"
 
 
   $("#btn-m").click(function() {
-
+    container.style.display="none";
+    searchRes.style.display="block";
            
-     container.style.display="none";
-     searchRes.style.display="block";
+    
       
      searchMedicine = $("#medicine").val();
      
@@ -45,26 +45,28 @@ fetch("https://raw.githubusercontent.com/SanjaNaskova/jsonData/master/data.json"
 //na pharmacies
 
 
-$(".all-pharm").click(function(){
+$("#test").on("click",function(e){
+ e.preventDefault();
+    console.log($("#apteki"))
 
-    $("#apteki").append(`<div class="dropdown">
-    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Населба
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#">Центар</a>
-      <a class="dropdown-item" href="#">Ново Лисиче</a>
-      <a class="dropdown-item" href="#">Аеродром</a>
-      <a class="dropdown-item" href="#">Карпош 3</a>
-    </div>
-  </div>`);
+    container.style.display="none";
+    // searchRes.style.display="block";
+    //   aptekiContainer.style.display = "block";
+    searchRes.style.display="none";
+        console.log(apteki);
+         makeCards(apteki);
 
-
-  
-    //  container.style.display="none";
-    //  searchRes.style.display="block";   
-    //  console.log("aaaaa");
-     makeCards(apteki);
+         $("#drop-container").html(`<div class="dropdown">
+             <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Населба
+             </button>
+             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+               <a class="dropdown-item" id="dropCentar" href="#">Центар</a>
+               <a class="dropdown-item" href="#">Ново Лисиче</a>
+               <a class="dropdown-item" href="#">Аеродром</a>
+               <a class="dropdown-item" href="#">Карпош 3</a>
+             </div>
+           </div>`);
 
 })
 
@@ -105,14 +107,15 @@ $("#dropCentar").click(function(){
 
     container.style.display="none";
     searchRes.style.display="none";
-    dropContainer.style.display = "block"
-    
+
+    dropContainer.style.display = "none"
+    aptekiContainer.style.display = "block";
     showFromCentar();
 })
 
 function showFromCentar(){
      console.log("Show from Centar ");
-  const centar =  apteki.pharmacies(pharm => pharm.location.naselba = "Центар");
+  const centar =  apteki.pharmacies.where(pharm => pharm.location.naselba = "Центар");
 
   pharmaciesCount = 0;
   
@@ -220,7 +223,7 @@ function showFromCentar(){
 //     });
 //     }
 
-
+console.log("Sanja");
 
 function showResult(){
 
@@ -325,6 +328,7 @@ function showResult(){
 
 
 function makeCards(data){
+    console.log("makecards")
 let pharmaciesCount = 0;
 let pharmaciesString = "";
 data.pharmacies.forEach(pharm => {
@@ -384,8 +388,8 @@ data.pharmacies.forEach(pharm => {
     pharmaciesCount++;
 
 });
-
-      document.getElementById("apteki").innerHTML = pharmaciesString;
+       //res
+      $("#apteki").append(pharmaciesString);
      
 }
 
