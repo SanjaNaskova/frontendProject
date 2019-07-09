@@ -55,95 +55,94 @@ $("#test").on("click",function(){
            <a class="dropdown-item" href="#">Карпош 3</a>
          </div>
        </div>`);
+
+       $("#dropCentar").click(function(){
+
+        dropresults.style.display = "block";
+        dropContainer.style.display = "block"
+        container.style.display="none";
+        searchRes.style.display="none";
+        aptekiContainer.style.display = "none";
+        showFromCentar();
+    })
         
 
 })
 
 
-
-$("#dropCentar").click(function(){
-
-    dropresults.style.display = "block";
-    dropContainer.style.display = "block"
-    container.style.display="none";
-    searchRes.style.display="none";
-    aptekiContainer.style.display = "none";
-    showFromCentar();
-})
 
 function showFromCentar(){
-     console.log("Show from Centar ");
-  const centar =  apteki.pharmacies.filter(p => p.location.naselba = "Центар");
+    console.log("Show from Centar ");
 
-  pharmaciesCount = 0;
-  pharmaciesString = "";
+ let centar =  apteki.pharmacies.filter(pharm => pharm.location.naselba = "Центар");
 
- if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
-    console.log(1);
-    pharmaciesString += `
-    <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-4">
-    <div class="card">
-    <img src="${pharm.location.slika}"   class="card-img-top" alt="">
-    <h5 class="card-title">${pharm.name}</h5>
-    <p id="card-text">
-    ${pharm.location.address}<br>
-    <h6> Населба: ${pharm.location.naselba} </h6><br>
-    <h6> Во залиха: ${med.stock} парчиња</h6><br>
-    <h6> Цена: ${med.price} денари</h6><br>
-    </p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-    </div>
-    `  }
-    else if(pharmaciesCount % 2 != 0){
-        console.log(2);
-        pharmaciesString += `
-        
-        <div class="col-md-4">
-        <div class="card">
-        <img src="${pharm.location.slika}"  class="card-img-top" alt="">
-        <h5 class="card-title">${pharm.name}</h5>
-        <p id="card-text">
-        ${pharm.location.address}<br>
-        <h6> Населба: ${pharm.location.naselba} </h6>
-        <h6> Во залиха: ${med.stock} парчиња</h6><br>
-        <h6> Цена: ${med.price} денари</h6><br>
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-        </div>
-        </div>
-    `    } 
+ centar.forEach(pharm => {
 
-    else if(pharmaciesCount == centar.length - 1){
-        console.log(3);
-        pharmaciesString += `
-        <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-4">
-        <div class="card">
-        <img src="${pharm.location.slika}"  class="card-img-top" alt="">
-        <h5 class="card-title">${pharm.name}</h5>
-        <p id="card-text">
-        ${pharm.location.address}<br>
-        <h6> Населба: ${pharm.location.naselba} </h6>
-        <h6> Во залиха: ${med.stock} парчиња</h6><br>
-        <h6> Цена: ${med.price} денари</h6><br>
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-        </div>
-        </div>
-    `    }
+ pharmaciesCount = 0;
+ pharmaciesString = "";
 
-    pharmaciesCount++;
+if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
+   console.log(1);
+   pharmaciesString += `
+   <div class="row">
+   <div class="col-md-2"></div>
+   <div class="col-md-4">
+   <div class="card">
+   <img src="${pharm.location.slika}"   class="card-img-top" alt="">
+   <h5 class="card-title">${pharm.name}</h5>
+   <p id="card-text">
+   ${pharm.location.address}<br>
+   <h6> Населба: ${pharm.location.naselba} </h6><br>
+   </p>
+   <a href="#" class="btn btn-primary">Go somewhere</a>
+   </div>
+   </div>
+   `  }
+   else if(pharmaciesCount % 2 != 0){
+       console.log(2);
+       pharmaciesString += `
+       
+       <div class="col-md-4">
+       <div class="card">
+       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+       <h5 class="card-title">${pharm.name}</h5>
+       <p id="card-text">
+       ${pharm.location.address}<br>
+       <h6> Населба: ${pharm.location.naselba} </h6>
+       </p>
+       <a href="#" class="btn btn-primary">Go somewhere</a>
+       </div>
+       </div>
+       </div>
+   `    } 
 
- 
- $("#drop-res").html(centar);
+   else if(pharmaciesCount == centar.length - 1){
+       console.log(3);
+       pharmaciesString += `
+       <div class="row">
+       <div class="col-md-2"></div>
+       <div class="col-md-4">
+       <div class="card">
+       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+       <h5 class="card-title">${pharm.name}</h5>
+       <p id="card-text">
+       ${pharm.location.address}<br>
+       <h6> Населба: ${pharm.location.naselba} </h6>
+       </p>
+       <a href="#" class="btn btn-primary">Go somewhere</a>
+       </div>
+       </div>
+       </div>
+   `    }
+
+   pharmaciesCount++;
+
+});
+
+$("#drop-res").append(pharmaciesString);
 
 }
+
 
 
 function showResult(){
@@ -176,6 +175,7 @@ function showResult(){
                      <p id="card-text">
                      ${pharm.location.address}<br>
                      <h6> Населба: ${pharm.location.naselba} </h6><br>
+                     <h6> Во залиха: ${med.type} парчиња</h6><br>
                      <h6> Во залиха: ${med.stock} парчиња</h6><br>
                      <h6> Цена: ${med.price} денари</h6><br>
                      </p>
