@@ -2,9 +2,7 @@
 // Naslovi stavi na site strani
 // Dodadi sliki na aptekite i na apcinjata ( ako sakas da ne ti se zavisni od internet slikite na git kaci gi i od tamu desen klik -> copy image address )
 // Error stranata napravi ja so slika so tazno smajli ili nesto takvo i kopce sto nosi do Home i pisuva ( Try Again )
-//se dodava povekje pati dropdown retardiranoto kopce ako stisnam na lista na apteki (ako e preku index.html), vo pharmacies.html e okej
-//da povrzam lista na apteki od nav barot so funkcijata showcards da mi gi oecati kartite vo pharmacies.html  i dropdown na klik od naselba da pokaze apteki od taa naselba
-
+//od "kontakt" i "za nas" koa idam na lista na apteki ne mi dava nisto
 
 $(window).ready(function() {
   
@@ -15,7 +13,7 @@ let container = document.querySelector('.hide');
 let searchRes = document.querySelector('.search-res');
 let dropContainer = document.querySelector('#drop-container');
 let aptekiContainer = document.querySelector('#apteki');
-
+let dropresults = document.querySelector('#drop-res');
 
 fetch("https://raw.githubusercontent.com/SanjaNaskova/jsonData/master/data.json")
 .then (res => res.json())
@@ -23,7 +21,6 @@ fetch("https://raw.githubusercontent.com/SanjaNaskova/jsonData/master/data.json"
      container.style.display = "block";
      searchRes.style.display = "none";
     
-
      apteki = data;
      
 })
@@ -32,93 +29,55 @@ fetch("https://raw.githubusercontent.com/SanjaNaskova/jsonData/master/data.json"
   $("#btn-m").click(function() {
     container.style.display="none";
     searchRes.style.display="block";
-           
-    
-      
+               
      searchMedicine = $("#medicine").val();
      
     showResult();
-    
-    
+      
 })
 
-//na pharmacies
 
+$("#test").on("click",function(){
 
-$("#test").on("click",function(e){
- e.preventDefault();
-    console.log($("#apteki"))
-
-    container.style.display="none";
-    // searchRes.style.display="block";
-    //   aptekiContainer.style.display = "block";
+    container.style.display="none";   
     searchRes.style.display="none";
-        console.log(apteki);
-         makeCards(apteki);
 
+            makeCards(apteki);
+          
          $("#drop-container").html(`<div class="dropdown">
-             <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               Населба
-             </button>
-             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-               <a class="dropdown-item" id="dropCentar" href="#">Центар</a>
-               <a class="dropdown-item" href="#">Ново Лисиче</a>
-               <a class="dropdown-item" href="#">Аеродром</a>
-               <a class="dropdown-item" href="#">Карпош 3</a>
-             </div>
-           </div>`);
+         <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Населба
+         </button>
+         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+           <a class="dropdown-item" id="dropCentar" href="#">Центар</a>
+           <a class="dropdown-item" href="#">Ново Лисиче</a>
+           <a class="dropdown-item" href="#">Аеродром</a>
+           <a class="dropdown-item" href="#">Карпош 3</a>
+         </div>
+       </div>`);
+        
 
 })
 
-
-
-
-
-
-
-//na index
-
-//  $("#all-pharm").click(function(){
-
-//     $("#drop-container").append(`<div class="dropdown">
-//     <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-//       Населба
-//     </button>
-//     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-//       <a class="dropdown-item" href="#">Центар</a>
-//       <a class="dropdown-item" href="#">Ново Лисиче</a>
-//       <a class="dropdown-item" href="#">Аеродром</a>
-//       <a class="dropdown-item" href="#">Карпош 3</a>
-//     </div>
-//   </div>`);
-
-
-     
-//      container.style.display="none";
-//      searchRes.style.display="block";
-    
-//     //  console.log("aaaaa");
-//      makeCards(apteki);
-
-// })
 
 
 $("#dropCentar").click(function(){
 
+    dropresults.style.display = "block";
+    dropContainer.style.display = "block"
     container.style.display="none";
     searchRes.style.display="none";
-
-    dropContainer.style.display = "none"
-    aptekiContainer.style.display = "block";
+    aptekiContainer.style.display = "none";
     showFromCentar();
 })
 
 function showFromCentar(){
      console.log("Show from Centar ");
-  const centar =  apteki.pharmacies.where(pharm => pharm.location.naselba = "Центар");
+  const centar =  apteki.pharmacies.filter(p => p.location.naselba = "Центар");
 
   pharmaciesCount = 0;
-  
+  pharmaciesString = "";
+
  if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
     console.log(1);
     pharmaciesString += `
@@ -186,44 +145,6 @@ function showFromCentar(){
 
 }
 
-
-
-//proba 4
-//tutto qui, tutto ok
-
-// function showResult(){
-
-
-//       let medExsists = false;
-    
-//     apteki.pharmacies.forEach(pharm => {
-        
-//         pharm.items.forEach(med => {
-           
-//             if (med.name.toLowerCase() === searchMedicine.toLowerCase()) {
-//                   medExsists =true;
-//                 if (med.stock === 0) {
-//                     // $("#res").append("Бараниот лек " + searchMedicine.toUpperCase() + " го нема во залиха:" + '<br>');
-//                     //             $("#res").append("Каде: " + pharm.name + '<br>');
-//                     //             $("#res").append("Адреса:" + pharm.location.address + '<br>');                              
-    
-//                 }
-//                 else{
-//                     $("#res").append("Бараниот лек " + searchMedicine.toUpperCase() + " е достапен на следната локација: " + '<br>');
-//                     $("#res").append("Каде: " + pharm.name + '<br>');
-//                     $("#res").append("Адреса:" + pharm.location.address + '<br>');
-//                     $("#res").append("Во залиха: " + med.stock + '<br>');
-//                 }
-//             }                      
-//         });
-       
-//              if(!medExsists) 
-//            // alert("Бараниот лек не постои.");
-//             $("#res").html("Бараниот лек " + searchMedicine + " не постои.");
-//     });
-//     }
-
-console.log("Sanja");
 
 function showResult(){
 
@@ -389,7 +310,7 @@ data.pharmacies.forEach(pharm => {
 
 });
        //res
-      $("#apteki").append(pharmaciesString);
+      $("#apteki").html(pharmaciesString);
      
 }
 
