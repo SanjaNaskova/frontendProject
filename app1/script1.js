@@ -122,7 +122,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
    ${pharm.location.address}<br>
    <h6> Населба: ${pharm.location.naselba} </h6><br>
    </p>
-   <a href="#" class="btn btn-primary">Go somewhere</a>
+   <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
    </div>
    </div>
    `  }
@@ -138,6 +138,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
        ${pharm.location.address}<br>
        <h6> Населба: ${pharm.location.naselba} </h6>
        </p>
+       <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
        <a href="#" class="btn btn-primary">Go somewhere</a>
        </div>
        </div>
@@ -157,6 +158,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
        ${pharm.location.address}<br>
        <h6> Населба: ${pharm.location.naselba} </h6>
        </p>
+       <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
        <a href="#" class="btn btn-primary">Go somewhere</a>
        </div>
        </div>
@@ -174,16 +176,14 @@ $("#drop-res").html(pharmaciesString);
 function showFromNovoLisiche(){
     console.log("Show from novo lisice ");
 
- let centar =  apteki.pharmacies.filter(pharm => pharm.location.naselba === "Ново Лисиче");
+ let nl =  apteki.pharmacies.filter(pharm => pharm.location.naselba === "Ново Лисиче");
 
  pharmaciesCount = 0;
  let pharmaciesString = "";
 
- centar.forEach(pharm => {
+ nl.forEach(pharm => {
 
-
-
-if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
+if(pharmaciesCount % 2 == 0 && pharmaciesCount != nl.length - 1){
    console.log(1);
    pharmaciesString += `
    <div class="row">
@@ -196,7 +196,8 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
    ${pharm.location.address}<br>
    <h6> Населба: ${pharm.location.naselba} </h6><br>
    </p>
-   <a href="#" class="btn btn-primary">Go somewhere</a>
+   <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
+   <a href="#" class="btn btn-primary">Vidi na mapa</a>
    </div>
    </div>
    `  }
@@ -212,13 +213,14 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
        ${pharm.location.address}<br>
        <h6> Населба: ${pharm.location.naselba} </h6>
        </p>
+       <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
        <a href="#" class="btn btn-primary">Go somewhere</a>
        </div>
        </div>
        </div>
    `    } 
 
-   else if(pharmaciesCount == centar.length - 1){
+   else if(pharmaciesCount == nl.length - 1){
        console.log(3);
        pharmaciesString += `
        <div class="row">
@@ -230,6 +232,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
        <p id="card-text">
        ${pharm.location.address}<br>
        <h6> Населба: ${pharm.location.naselba} </h6>
+       <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
        </p>
        <a href="#" class="btn btn-primary">Go somewhere</a>
        </div>
@@ -248,16 +251,16 @@ $("#drop-res").html(pharmaciesString);
 function showFromAerodrom(){
     console.log("Show from Centar ");
 
- let centar =  apteki.pharmacies.filter(pharm => pharm.location.naselba === "Аеродром");
+ let aerodrom =  apteki.pharmacies.filter(pharm => pharm.location.naselba === "Аеродром");
 
  pharmaciesCount = 0;
  let pharmaciesString = "";
 
- centar.forEach(pharm => {
+ aerodrom.forEach(pharm => {
 
 
 
-if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
+if(pharmaciesCount % 2 == 0 && pharmaciesCount != aerodrom.length - 1){
    console.log(1);
    pharmaciesString += `
    <div class="row">
@@ -270,6 +273,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
    ${pharm.location.address}<br>
    <h6> Населба: ${pharm.location.naselba} </h6><br>
    </p>
+   <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
    <a href="#" class="btn btn-primary">Go somewhere</a>
    </div>
    </div>
@@ -286,13 +290,14 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
        ${pharm.location.address}<br>
        <h6> Населба: ${pharm.location.naselba} </h6>
        </p>
+       <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
        <a href="#" class="btn btn-primary">Go somewhere</a>
        </div>
        </div>
        </div>
    `    } 
 
-   else if(pharmaciesCount == centar.length - 1){
+   else if(pharmaciesCount == aerodrom.length - 1){
        console.log(3);
        pharmaciesString += `
        <div class="row">
@@ -305,6 +310,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
        ${pharm.location.address}<br>
        <h6> Населба: ${pharm.location.naselba} </h6>
        </p>
+       <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
        <a href="#" class="btn btn-primary">Go somewhere</a>
        </div>
        </div>
@@ -322,16 +328,16 @@ $("#drop-res").html(pharmaciesString);
 function showFromKarposh(){
     console.log("Show from Centar ");
 
- let centar =  apteki.pharmacies.filter(pharm => pharm.location.naselba === "Карпош 3");
+ let karposh =  apteki.pharmacies.filter(pharm => pharm.location.naselba === "Карпош 3");
 
  pharmaciesCount = 0;
  let pharmaciesString = "";
 
- centar.forEach(pharm => {
+ karposh.forEach(pharm => {
 
 
 
-if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
+if(pharmaciesCount % 2 == 0 && pharmaciesCount != karposh.length - 1){
    console.log(1);
    pharmaciesString += `
    <div class="row">
@@ -344,7 +350,8 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
    ${pharm.location.address}<br>
    <h6> Населба: ${pharm.location.naselba} </h6><br>
    </p>
-   <a href="#" class="btn btn-primary">Go somewhere</a>
+   <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
+   <a href="#" class="btn btn-primary">Vidi na mapa</a>
    </div>
    </div>
    `  }
@@ -360,13 +367,14 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
        ${pharm.location.address}<br>
        <h6> Населба: ${pharm.location.naselba} </h6>
        </p>
+       <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
        <a href="#" class="btn btn-primary">Go somewhere</a>
        </div>
        </div>
        </div>
    `    } 
 
-   else if(pharmaciesCount == centar.length - 1){
+   else if(pharmaciesCount == karposh.length - 1){
        console.log(3);
        pharmaciesString += `
        <div class="row">
@@ -379,6 +387,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
        ${pharm.location.address}<br>
        <h6> Населба: ${pharm.location.naselba} </h6>
        </p>
+       <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
        <a href="#" class="btn btn-primary">Go somewhere</a>
        </div>
        </div>
@@ -398,7 +407,6 @@ function showResult(){
 
     pharmaciesCount = 0;
     pharmaciesString = "";
-    let noResult = "";
     let medExsists = false;
   
   apteki.pharmacies.forEach(pharm => {
@@ -428,6 +436,7 @@ function showResult(){
                      <h6> Во залиха: ${med.stock} парчиња</h6><br>
                      <h6> Цена: ${med.price} денари</h6><br>
                      </p>
+                     <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
                      <a href="#" class="btn btn-primary">Go somewhere</a>
                      </div>
                      </div>
@@ -447,6 +456,7 @@ function showResult(){
                         <h6> Во залиха: ${med.stock} парчиња</h6><br>
                         <h6> Цена: ${med.price} денари</h6><br>
                         </p>
+                        <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                         </div>
@@ -468,6 +478,7 @@ function showResult(){
                         <h6> Во залиха: ${med.stock} парчиња</h6><br>
                         <h6> Цена: ${med.price} денари</h6><br>
                         </p>
+                        <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                         </div>
@@ -482,15 +493,18 @@ function showResult(){
   });
 
   //sto da printa
+  
   if(medExsists){
 
-    $('#res').html(` <div class="alert alert-info">
+    $('#res').html(`<div class="alert alert-success">
     <div class="container">
         <div class="alert-icon">
-        </div>
+         
         <h2><b>${searchMedicine.toUpperCase()}</b> е достапен на следниве локации:<br><br><br>
-    </div>
-</div>` + pharmaciesString);
+    </div></div>
+    </div>` + pharmaciesString);
+
+
     // $("#res").html(`<h2 id="lek-naslov"> ${searchMedicine.toUpperCase()}  е достапен на следниве локации:</h2><br><br><br> ` + pharmaciesString);
 
   }
@@ -532,6 +546,7 @@ data.pharmacies.forEach(pharm => {
         ${pharm.location.address}<br>
        <h6> Населба: ${pharm.location.naselba} </h6>
         </p>
+        <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
         <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
         </div>
@@ -548,6 +563,7 @@ data.pharmacies.forEach(pharm => {
         ${pharm.location.address}<br>
         <h6> Населба: ${pharm.location.naselba} </h6>
         </p>
+        <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
         <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
         </div>
@@ -567,6 +583,7 @@ data.pharmacies.forEach(pharm => {
         ${pharm.location.address}<br>
         <h6> Населба: ${pharm.location.naselba} </h6>
         </p>
+        <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="${pharm.map}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div>
         <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
         </div>

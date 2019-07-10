@@ -69,7 +69,7 @@ left: 20px;
     background-repeat: no-repeat;
 }
 
-.card .pharm-img::after{
+.card .pharm-img::after{ 
     content:"";
     display: block;
     padding-top: 80%;
