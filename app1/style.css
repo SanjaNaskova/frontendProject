@@ -1,3 +1,7 @@
+body{
+    padding: 0;
+    font-family: 'Open Sans', sans-serif !important;
+}
 a{
 cursor:pointer;
 }
@@ -31,18 +35,32 @@ left: 20px;
 #search input{
     width: 80%;
     padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #b0b0b0;
 }
 #search button{
     margin-left: 5px;
 }
 .main {
-    margin-top: 30vh;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.navbar{
+    border-bottom: 1px solid #ddd;
 }
 
 .navbar .nav-logo{
     width: 150px;
 }
 
+.card-title{
+    margin: 20px 0;
+    text-align: center;
+    font-weight: 600;
+}
 .img.card-img-top{
     width: 100%;
     height: 100%;
@@ -57,8 +75,13 @@ left: 20px;
     min-height:100vh;
   }
 
-  .card-img-top {
-      width: 100%;
+  .img-card-top {
+    width: 100%;
+    height: 166px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
   }
   .card{
       max-width: 300px;
@@ -67,12 +90,23 @@ left: 20px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    border-bottom: 1px solid #e4e4e4;
 }
 
 .card .pharm-img::after{ 
     content:"";
     display: block;
     padding-top: 80%;
+}
+
+#apteki .row div{
+    margin-bottom: 20px;
+}
+#res .row div{
+    margin-bottom: 20px;
+}
+#drop-res .row div{
+    margin-bottom: 20px;
 }
   #footnote{
       font-size: 13px;
@@ -84,16 +118,26 @@ left: 20px;
     width: 100%;
     max-width: 200px;
     margin: 0 auto;
-  }
-
-
-  .contact-naslov{
-      background-color:#90dfcf;
+    padding: 45px 0;
 
   }
+
+  .card .mapouter{
+      width: 100% !important;
+  }
+
+  .card .gmap_canvas{
+      width: 100% !important;
+  }
+
 
   #contct-naslov{
-color: white;
+    color: #2c2c2c;
+    text-align: center;
+    margin: 0;
+    background-color: #ccf8dc;
+    padding: 20px 0;
+    font-weight: 600;
   }
 
   #simb-boja{
@@ -104,4 +148,23 @@ color: white;
   #lek-naslov{
       text-shadow: #6f9492;
       color: darkslategrey;
+  }
+
+  .form{
+    text-align: left;
+    background-color: #ffffff;
+    border-radius: 2px;
+    padding: 0;
+    border: 1px solid #ddd;
+  }
+
+  .form-in{
+      padding: 20px;
+  }
+
+  .form label{
+    display: inline-block;
+    margin: 1rem 0 .5rem 0;
+    font-weight: 600;
+    color: #5e5e5e;
   }

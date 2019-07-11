@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Contact</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
 </head>
 <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light ">
                 <a class="navbar-brand" href="index.html" ><img src="img\logo.png" class="nav-logo" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
@@ -22,7 +23,8 @@
                       <a class="nav-link" href="index.html">Почетна <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item" id="all-pharm">
-                      <a class="nav-link" id="test" href="#">Листа на аптеки</a>
+                      <!-- <a class="nav-link nav-pharm all-pharm" href="index.html#test">Листа на аптеки</a> -->
+                      <a class="nav-link" href="#">Листа на аптеки</a>
                     </li>
                     <li class="nav-item">
                             <a class="nav-link" href="about.html">За нас</a>
@@ -35,41 +37,41 @@
                  
                 </div>
               </nav>
-              <div class="contact-naslov">
-                 <h2 id="contct-naslov">Контакт</h2> <br>
-              </div><br>
   
-      <form>
-        <div class="row">
-          <div class="col">
-            <label for="firstName">Име</label>
-            <input type="text" id="firstName" class="form-control" placeholder="Име">
-          </div>
-          <div class="col">
-              <label for="lastName">Презиме</label>
-            <input type="text" id="lastName" class="form-control" placeholder="Презиме">
-          </div>
-        </div>
-      </form>  
-      <form>
-          <div class="row">
-            <div class="col">
-              <label for="mail">Емаил</label>
-              <input type="text" id="mail" class="form-control" placeholder="Внеси маил адреса">
+    <div class="container form">
+        <h2 id="contct-naslov">Контакт</h2>
+     <div class="form-in">
+        <form>
+            <div class="row">
+              <div class="col">
+                <label for="firstName">Име</label>
+                <input type="text" id="firstName" class="form-control" placeholder="Име">
+              </div>
+              <div class="col">
+                  <label for="lastName">Презиме</label>
+                <input type="text" id="lastName" class="form-control" placeholder="Презиме">
+              </div>
             </div>
-            <div class="col">
-                <label for="password">Лозинка</label>
-              <input type="text" id="password" class="form-control" placeholder="Лозинка">
-            </div>
-          </div>
-        </form>  
-        <div class="form-group"> <br>
-            <label for="exampleFormControlTextarea1">Порака</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
-     
-
-      <button type="submit" class="btn btn-outline-primary">Испрати</button>
+          </form>  
+          <form>
+              <div class="row">
+                <div class="col">
+                  <label for="mail">Емаил</label>
+                  <input type="text" id="mail" class="form-control" placeholder="Внеси маил адреса">
+                </div>
+                <div class="col">
+                    <label for="password">Лозинка</label>
+                  <input type="text" id="password" class="form-control" placeholder="Лозинка">
+                </div>
+              </div>
+            </form>  
+            <div class="form-group"> <br>
+                <label for="exampleFormControlTextarea1">Порака</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+          <button type="submit" class="btn btn-outline-primary">Испрати</button>
+     </div>
+    </div>
 
       
 

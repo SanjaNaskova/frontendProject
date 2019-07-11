@@ -1,6 +1,6 @@
 
-// Naslovi stavi na site strani
 //od "kontakt" i "za nas" koa idam na lista na apteki ne mi dava nisto
+//od naselbi ne mozam da se vrtama na lista na apteki
 
 $(window).ready(function() {
   
@@ -116,7 +116,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
    <div class="col-md-2"></div>
    <div class="col-md-4">
    <div class="card">
-   <img src="${pharm.location.slika}"   class="card-img-top" alt="">
+  <div class="img-card-top" style="background-image:url('${pharm.location.slika}')"></div>
    <h5 class="card-title">${pharm.name}</h5>
    <p id="card-text">
    ${pharm.location.address}<br>
@@ -132,7 +132,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
        
        <div class="col-md-4">
        <div class="card">
-       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+      <div class="img-card-top" style="background-image:url('${pharm.location.slika}')"></div>
        <h5 class="card-title">${pharm.name}</h5>
        <p id="card-text">
        ${pharm.location.address}<br>
@@ -152,7 +152,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != centar.length - 1){
        <div class="col-md-2"></div>
        <div class="col-md-4">
        <div class="card">
-       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+      <div class="img-card-top" style="background-image:url('${pharm.location.slika}')"></div>
        <h5 class="card-title">${pharm.name}</h5>
        <p id="card-text">
        ${pharm.location.address}<br>
@@ -190,7 +190,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != nl.length - 1){
    <div class="col-md-2"></div>
    <div class="col-md-4">
    <div class="card">
-   <img src="${pharm.location.slika}"   class="card-img-top" alt="">
+  <div class="img-card-top" style="background-image:url('${pharm.location.slika}')"></div>
    <h5 class="card-title">${pharm.name}</h5>
    <p id="card-text">
    ${pharm.location.address}<br>
@@ -207,7 +207,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != nl.length - 1){
        
        <div class="col-md-4">
        <div class="card">
-       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+      <div class="img-card-top" style="background-image:url('${pharm.location.slika}')"></div>
        <h5 class="card-title">${pharm.name}</h5>
        <p id="card-text">
        ${pharm.location.address}<br>
@@ -227,7 +227,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != nl.length - 1){
        <div class="col-md-2"></div>
        <div class="col-md-4">
        <div class="card">
-       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+      <div class="img-card-top" style="background-image:url('${pharm.location.slika}')"></div>
        <h5 class="card-title">${pharm.name}</h5>
        <p id="card-text">
        ${pharm.location.address}<br>
@@ -267,7 +267,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != aerodrom.length - 1){
    <div class="col-md-2"></div>
    <div class="col-md-4">
    <div class="card">
-   <img src="${pharm.location.slika}"   class="card-img-top" alt="">
+  <div class="img-card-top" style="background-image:url('${pharm.location.slika}')"></div>
    <h5 class="card-title">${pharm.name}</h5>
    <p id="card-text">
    ${pharm.location.address}<br>
@@ -284,7 +284,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != aerodrom.length - 1){
        
        <div class="col-md-4">
        <div class="card">
-       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+      <div class="img-card-top" style="background-image:url('${pharm.location.slika}')"></div>
        <h5 class="card-title">${pharm.name}</h5>
        <p id="card-text">
        ${pharm.location.address}<br>
@@ -304,7 +304,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != aerodrom.length - 1){
        <div class="col-md-2"></div>
        <div class="col-md-4">
        <div class="card">
-       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+      <div class="img-card-top" style="background-image:url('${pharm.location.slika}')"></div>
        <h5 class="card-title">${pharm.name}</h5>
        <p id="card-text">
        ${pharm.location.address}<br>
@@ -344,7 +344,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != karposh.length - 1){
    <div class="col-md-2"></div>
    <div class="col-md-4">
    <div class="card">
-   <img src="${pharm.location.slika}"   class="card-img-top" alt="">
+  <div class="img-card-top" style="background-image:url('${pharm.location.slika}')"></div>
    <h5 class="card-title">${pharm.name}</h5>
    <p id="card-text">
    ${pharm.location.address}<br>
@@ -361,7 +361,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != karposh.length - 1){
        
        <div class="col-md-4">
        <div class="card">
-       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+      <div class="img-card-top" style="background-image:url('${pharm.location.slika}')"></div>
        <h5 class="card-title">${pharm.name}</h5>
        <p id="card-text">
        ${pharm.location.address}<br>
@@ -381,7 +381,7 @@ if(pharmaciesCount % 2 == 0 && pharmaciesCount != karposh.length - 1){
        <div class="col-md-2"></div>
        <div class="col-md-4">
        <div class="card">
-       <img src="${pharm.location.slika}"  class="card-img-top" alt="">
+      <div class="img-card-top" style="background-image:url('${pharm.location.slika}')"></div>
        <h5 class="card-title">${pharm.name}</h5>
        <p id="card-text">
        ${pharm.location.address}<br>
@@ -500,7 +500,7 @@ function showResult(){
     <div class="container">
         <div class="alert-icon">
          
-        <h2><b>${searchMedicine.toUpperCase()}</b> е достапен на следниве локации:<br><br><br>
+        <h2><b>${searchMedicine.toUpperCase()}</b> е достапен на следниве локации:
     </div></div>
     </div>` + pharmaciesString);
 
@@ -540,7 +540,7 @@ data.pharmacies.forEach(pharm => {
         <div class="col-md-2"></div>
         <div class="col-md-4">
         <div class="card">
-        <img src="${pharm.location.slika}"   width="100px" height="100px" class="card-img-top" alt="">
+       <div class="img-card-top" style="background-image:url('${pharm.location.slika}')"></div>
         <h5 class="card-title">${pharm.name}</h5>
         <p id="card-text">
         ${pharm.location.address}<br>
@@ -557,7 +557,7 @@ data.pharmacies.forEach(pharm => {
         pharmaciesString += `
         <div class="col-md-4">
         <div class="card">
-        <img src="${pharm.location.slika}"   width="100px" height="100px" class="card-img-top" alt="">
+        <div class="img-card-top" style="background-image:url('${pharm.location.slika}')"></div>
         <h5 class="card-title">${pharm.name}</h5>
         <p id="card-text">
         ${pharm.location.address}<br>
@@ -577,7 +577,7 @@ data.pharmacies.forEach(pharm => {
         <div class="col-md-2"></div>
         <div class="col-md-4">
         <div class="card">
-        <img src="${pharm.location.slika}" width="100px" height="100px" class="card-img-top" alt="">
+        <div class="img-card-top" style="background-image:url('${pharm.location.slika}')"></div>
         <h5 class="card-title">${pharm.name}</h5>
         <p id="card-text">
         ${pharm.location.address}<br>
